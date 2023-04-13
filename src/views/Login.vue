@@ -1,11 +1,9 @@
 <script setup>
-import Button from '../components/Button.vue'
-import Label from '../components/Label.vue'
+import Form from '../components/Form.vue'
 </script>
 
 <template>
   <main>
-    <Button text="Button" />
-    <Label text="Label" />
+    <Form />
   </main>
 </template>

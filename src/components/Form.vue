@@ -1,3 +1,8 @@
+<script setup>
+import Button from '../components/Button.vue'
+import Label from '../components/Label.vue'
+</script>
+
 <template>
     <div id="login_div" class="container d-flex align-items-center justify-content-center">
         <form action="/login/" method="POST">
