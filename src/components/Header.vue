@@ -3,7 +3,7 @@
 </script>
 <template>
     <div id="header" style="width: 100%;">
-        <img :src="Logo" alt="Logo" />
+        <a href="/"><img :src="Logo" alt="Logo" /></a>
         <a href="/logout" style="float: right; text-decoration: none; padding-right: 10px;">Logout</a>
     </div>
 </template>

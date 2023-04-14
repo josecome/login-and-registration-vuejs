@@ -21,14 +21,6 @@ computed(() => this.$route.path === '/logout'? alert('User Logged out!') : '')
 </template>
 
 <style>
-  header {
-    float: top;
-    width: 100%;
-    background-color: blue;
-  }
-  ._100per {
-    width: 100%;
-  }
 </style>
 <style>
     @import "bootstrap/dist/css/bootstrap.css";
