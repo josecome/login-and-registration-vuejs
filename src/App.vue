@@ -1,22 +1,32 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import { ref } from 'vue'
+import Header from './components/Header.vue'
+import { computed } from '@vue/reactivity';
 
+const isLogin = ref(false);
+computed(() => this.$route.path === '/login'? isLogin : !isLogin)
+computed(() => this.$route.path === '/logout'? alert('User Logged out!') : '')
 </script>
 
 <template>
-  <header>
+  <Header>
+     
+  </Header>
     <div>
-        <RouterLink to="/">Login</RouterLink>
+        <RouterLink v-show="!isLogin" to="/login">Login</RouterLink>
         <RouterLink to="/about">About</RouterLink>
     </div>
-  </header>
-
   <RouterView />
 </template>
 
-<style scoped>
+<style>
   header {
     float: top;
+    width: 100%;
+    background-color: blue;
+  }
+  ._100per {
     width: 100%;
   }
 </style>
