@@ -11,9 +11,10 @@ a {
 }
   
 footer {
-  margin: auto;
-  width: 50%;  
-  margin-top: 30px;
+  position: absolute;
+  width: 100%;  
+  bottom: 0px;
   text-align: center;
+  background-color: #EFF1F3;
 }
 </style>

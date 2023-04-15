@@ -2,6 +2,7 @@
 import { RouterLink, RouterView, useRoute } from 'vue-router'
 import { ref } from 'vue'
 import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
 import { computed } from '@vue/reactivity';
 
 const route = useRoute();
@@ -20,11 +21,9 @@ const pth = computed(() => route.path)
         <RouterLink v-show="pth !== '/create_account'" to="/create_account" style="padding-right: 12px; text-decoration: none;">
           Create Account
         </RouterLink>
-        <RouterLink to="/about" style="padding-right: 12px; text-decoration: none;">
-          About
-        </RouterLink>
     </div>
   <RouterView />
+  <Footer />
 </template>
 
 <style>
