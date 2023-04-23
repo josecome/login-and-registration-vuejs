@@ -12,7 +12,9 @@
             type: String,
             required: true
         },
-    })  
+    }) 
+    const emit = defineEmits(["logIn"]);
+    const onClick = () => emit('logIn') 
   </script>
   <template>
     <button @click="onClick()" style="{{ background: color }}" class="{{ class_name }}" >
