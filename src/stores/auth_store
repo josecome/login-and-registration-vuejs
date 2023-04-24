@@ -1,0 +1,35 @@
+import { ref, computed } from 'vue'
+import { defineStore } from 'pinia'
+
+export const useAuthStore = defineStore('auth_store', () => {
+
+  const isLoggedin = ref(false)
+  const token = ref('no_token')
+  const userLogin = reactive({ email: "", password: ""});
+  
+  const requestLogin = async () => {
+    const v = { "email": userLogin.email, "password": userLogin.password, "token": token.value }
+    const res = await axios.post('http://127.0.0.1:8000/api/login/', v,
+      {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: 'bearer ' + token.value
+        }
+      }
+    );
+    token.value = res.token
+    localStorage.removeItem("token")
+    localStorage.setItem("token", token.value)
+  } 
+  const getCurrentToken = localStorage.getItem("myCat");
+
+  function login() {
+    requestLogin();
+  }
+
+
+
+  const userRegistration = reactive({ name: "", email: "", password: ""});
+  return { isLoggedin, LoginUser, UserName  }
+})
