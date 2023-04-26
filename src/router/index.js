@@ -11,7 +11,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'Home',
+      name: 'home',
       component: Home,
       meta: {
         requiresAuth: true
@@ -44,9 +44,9 @@ const router = createRouter({
 })
 router.beforeEach((to, from, next) => {
   if (to.matched.some(page => page.meta.requiresAuth)) { //to.name !== 'login' && !this.isloggedin
-    const store = useStoreAuth()
+    const auth_store = useStoreAuth()
     const {  isLoggedin } = storeToRefs(auth_store)
-    if ( isLoggedin ) { //Is not logged in, go to Login Page
+    if ( !isLoggedin.value ) { //Is not logged in, go to Login Page
       next({ 
         name: 'login' 
         //path: 'login',
@@ -59,5 +59,4 @@ router.beforeEach((to, from, next) => {
     next() // does not require auth, make sure to always call next()!
   }
 })
-
 export default router

@@ -1,13 +1,24 @@
 <script setup>
 import { RouterLink, RouterView, useRoute } from 'vue-router'
-import { ref } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import { computed } from '@vue/reactivity';
+import { useStoreAuth } from '@/stores/auth_store'
+import { useRouter } from 'vue-router'
+import { storeToRefs } from 'pinia'
 
 const route = useRoute();
-const isLogin = ref(false);
+const router = useRouter()
 const pth = computed(() => route.path)
+const auth_store = useStoreAuth()
+const {  isLoggedin } = storeToRefs(auth_store)
+watch(isLoggedin, () => isLoggedin.value ? router.push({ name: 'home' }) : '' )
+onMounted(() => { 
+  auth_store.LoginUserByToken() 
+  isLoggedin.value ? router.push({ name: 'home' }) : ''
+})
+
 </script>
 
 <template>
